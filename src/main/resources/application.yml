@@ -1,0 +1,18 @@
+# LOGGING
+logging:
+  level:
+   org.springframework.web: DEBUG
+
+  # APPLICATION
+spring:
+  application:
+   name: turkcell-crm-order-management
+  # MONGODB
+  data:
+    mongodb:
+      authentication-database: admin
+      database: turkcell-crm
+      host: localhost
+      port: 27017
+      username: root
+      password: root
