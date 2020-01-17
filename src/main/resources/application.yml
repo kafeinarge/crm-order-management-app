@@ -3,16 +3,19 @@ logging:
   level:
    org.springframework.web: DEBUG
 
+
   # APPLICATION
 spring:
   application:
    name: turkcell-crm-order-management
-  # MONGODB
-  data:
-    mongodb:
-      authentication-database: admin
-      database: turkcell-crm
-      host: localhost
-      port: 27017
-      username: root
-      password: root
+
+
+kafka-client-id: crmorderclient
+kafka-bootstrap-servers: localhost:9092
+kafka-producer-key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+kafka-producer-value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+kafka-order-topic: crmorder
+
+server:
+  port: 8084

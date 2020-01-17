@@ -1,4 +1,4 @@
-package com.turkcell.crm.ordermanagement;
+package com.turkcell.crm.ordermanagement.util;
 
 public class OrderConstants {
 
