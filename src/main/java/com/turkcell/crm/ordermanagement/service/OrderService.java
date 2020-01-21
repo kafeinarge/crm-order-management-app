@@ -60,8 +60,7 @@ public class OrderService {
 
         String topicName = kafkaOrderTopic;
 
-        Properties kafkaProperties = createKafkaProperties();
-        Producer producer = new KafkaProducer<String, String>(kafkaProperties);
+        Producer producer = createProducer();
 
         Gson gson = new Gson();
         String orderJsonToKafka = gson.toJson(order);
@@ -81,11 +80,11 @@ public class OrderService {
     }
 
     /**
-     * returns properties of kafka
+     * returns producer using kafka properties
      *
      * @return
      */
-    public Properties createKafkaProperties() {
+    public Producer createProducer() {
         Properties configProperties = new Properties();
         configProperties.put(ProducerConfig.CLIENT_ID_CONFIG, kafkaClientId);
         configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -95,6 +94,6 @@ public class OrderService {
         configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                 kafkaProducerValueSerializer);
 
-        return configProperties;
+        return new KafkaProducer<String, String>(configProperties);
     }
 }
