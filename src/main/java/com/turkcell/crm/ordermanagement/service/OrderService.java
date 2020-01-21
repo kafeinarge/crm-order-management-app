@@ -5,6 +5,7 @@ import com.turkcell.crm.ordermanagement.dto.OrderDTO;
 import com.turkcell.crm.ordermanagement.entity.Order;
 import com.turkcell.crm.ordermanagement.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
+import net.minidev.json.parser.ParseException;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -13,6 +14,7 @@ import org.apache.kafka.common.KafkaException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Properties;
 
 @Service
@@ -37,12 +39,24 @@ public class OrderService {
     final
     OrderMapper orderMapper;
 
-    public OrderService(OrderMapper orderMapper) {
+    final
+    StaticIpProvider staticIpProvider;
+
+    public OrderService(OrderMapper orderMapper, StaticIpProvider staticIpProvider) {
         this.orderMapper = orderMapper;
+        this.staticIpProvider = staticIpProvider;
     }
 
-    public void save(OrderDTO orderDTO) {
+    /**
+     * order has been received and an available mocking staticIP set to order.
+     * @param orderDTO
+     * @throws IOException
+     * @throws ParseException
+     */
+    public void save(OrderDTO orderDTO) throws IOException, ParseException {
         Order order = orderMapper.toEntity(orderDTO);
+        String availableStaticIP = staticIpProvider.retrieveAvailableStaticIP();
+        order.setStaticIP(availableStaticIP);
 
         String topicName = kafkaOrderTopic;
 

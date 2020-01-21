@@ -10,8 +10,17 @@ spring:
    name: turkcell-crm-order-management
 
 
+#kafka-client-id: crmorderclient
+#kafka-bootstrap-servers: 207.154.232.181:31357
+##kafka-bootstrap-servers: localhost:9092
+#kafka-producer-key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+#kafka-producer-value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#
+#kafka-order-topic: crmorder
+
+
 kafka-client-id: crmorderclient
-kafka-bootstrap-servers: localhost:9092
+kafka-bootstrap-servers: kafka-service:9092
 kafka-producer-key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 kafka-producer-value-serializer: org.apache.kafka.common.serialization.StringSerializer
 

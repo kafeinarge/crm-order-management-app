@@ -8,10 +8,10 @@ import lombok.Data;
 @Data
 public class OrderDTO extends BaseDTO {
 
+
     private Customer customer;
 
     private Catalog catalog;
 
-    private String staticIP;
 
 }
