@@ -29,4 +29,4 @@ kafka-order-topic: crmorder
 server:
   port: 8080
   servlet:
-    context-path: order-management
+    context-path: /order-management
