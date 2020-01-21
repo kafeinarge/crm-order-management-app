@@ -27,4 +27,6 @@ kafka-producer-value-serializer: org.apache.kafka.common.serialization.StringSer
 kafka-order-topic: crmorder
 
 server:
-  port: 8084
+  port: 8080
+  servlet:
+    context-path: order-management
