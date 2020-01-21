@@ -1,6 +1,5 @@
 package com.turkcell.crm.ordermanagement.service;
 
-import com.google.gson.JsonParser;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
