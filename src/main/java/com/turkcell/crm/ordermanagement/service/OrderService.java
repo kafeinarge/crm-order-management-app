@@ -42,6 +42,13 @@ public class OrderService {
     final
     StaticIpProvider staticIpProvider;
 
+    private Producer producer;
+
+    /**
+     * all injections are set on constructor
+     * @param orderMapper
+     * @param staticIpProvider
+     */
     public OrderService(OrderMapper orderMapper, StaticIpProvider staticIpProvider) {
         this.orderMapper = orderMapper;
         this.staticIpProvider = staticIpProvider;
@@ -60,7 +67,8 @@ public class OrderService {
 
         String topicName = kafkaOrderTopic;
 
-        Producer producer = createProducer();
+        if(producer==null)
+            producer = createKafkaProducer();
 
         Gson gson = new Gson();
         String orderJsonToKafka = gson.toJson(order);
@@ -84,7 +92,7 @@ public class OrderService {
      *
      * @return
      */
-    public Producer createProducer() {
+    public Producer createKafkaProducer() {
         Properties configProperties = new Properties();
         configProperties.put(ProducerConfig.CLIENT_ID_CONFIG, kafkaClientId);
         configProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
