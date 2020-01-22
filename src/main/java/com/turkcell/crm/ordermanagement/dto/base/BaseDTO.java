@@ -1,4 +1,4 @@
-package com.turkcell.crm.ordermanagement.dto;
+package com.turkcell.crm.ordermanagement.dto.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

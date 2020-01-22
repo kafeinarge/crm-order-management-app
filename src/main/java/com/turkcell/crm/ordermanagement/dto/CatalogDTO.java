@@ -1,5 +1,7 @@
 package com.turkcell.crm.ordermanagement.dto;
 
-public class CatalogDTO extends BaseDTO{
+import com.turkcell.crm.ordermanagement.dto.base.BaseDTO;
+
+public class CatalogDTO extends BaseDTO {
 
 }

@@ -1,7 +1,7 @@
 package com.turkcell.crm.ordermanagement.mapper;
 
-import com.turkcell.crm.ordermanagement.dto.BaseDTO;
-import com.crm.ordermanagementapp.crm.entity.base.BaseEntity;
+import com.turkcell.crm.ordermanagement.dto.base.BaseDTO;
+import com.turkcell.crm.ordermanagement.entity.base.BaseEntity;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -11,7 +11,7 @@ import java.util.List;
 public interface BaseMapper<Entity extends BaseEntity, DTO extends BaseDTO>  {
 
     @Named("toEntity")
-    @Mapping(target = "creationDate", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
     Entity toEntity(DTO dto);
 
     @Named("toDTO")
