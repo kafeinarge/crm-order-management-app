@@ -16,7 +16,7 @@ public class CustomerTest {
     @Before
     public void setUp() {
         customer = new Customer();
-        customer.setTckn("13647285617");
+        customer.setIdentityNumber("13647285617");
     }
 
     @Test
@@ -41,7 +41,7 @@ public class CustomerTest {
 
     private Customer createCustomer() {
         Customer customer = new Customer();
-        customer.setTckn("13647285617");
+        customer.setIdentityNumber("13647285617");
         return customer;
     }
 

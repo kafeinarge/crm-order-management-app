@@ -24,7 +24,7 @@ kafka-bootstrap-servers: kafka-service:9092
 kafka-producer-key-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
 kafka-producer-value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
-kafka-order-topic: crmorder
+kafka-order-topic: crmorders
 
 server:
   port: 8080

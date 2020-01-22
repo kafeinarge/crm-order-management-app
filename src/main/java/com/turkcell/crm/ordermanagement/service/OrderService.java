@@ -42,8 +42,6 @@ public class OrderService {
     final
     StaticIpProvider staticIpProvider;
 
-    private Producer producer;
-
     /**
      * all injections are set on constructor
      * @param orderMapper
@@ -67,8 +65,7 @@ public class OrderService {
 
         String topicName = kafkaOrderTopic;
 
-        if(producer==null)
-            producer = createKafkaProducer();
+        Producer producer = createKafkaProducer();
 
         Gson gson = new Gson();
         String orderJsonToKafka = gson.toJson(order);
